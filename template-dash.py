@@ -58,29 +58,50 @@ def get_cruise_from_underway_filename(fn: Path | str) -> str:
     return cruise
 
 
-def template_dash(in_dash_file: Path | str, underway_file: Path | str, out_dash_file: Path | str):
+def template_dash(in_dash_file: Path | str, underway_file: Path | str, out_dir: Path | str):
     in_dash_file = Path(in_dash_file)
     underway_file = Path(underway_file)
-    out_dash_file = Path(out_dash_file)
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Create output dash JSON file name. Assuming template JSON file is named
+    # CRUISE-ByTime.json or CRUISE-Ops.json or some variant, replace CRUISE
+    # with the actual cruise name and write the file to the output directory.
     cruise = get_cruise_from_underway_filename(underway_file)
+    out_dash_file = Path(in_dash_file.name.replace("CRUISE", cruise))
+    out_dash_file = out_dir / out_dash_file
+    
     with in_dash_file.open() as fh:
         dash = json.load(fh)
     replace_time_range(dash, *read_date_range(underway_file))
     replace_cruise(dash, cruise)
-    replace_uid(dash, cruise)
+    # Use the output dashboard JSON file name, without .json ext, as dashboard
+    # UID.
+    replace_uid(dash, out_dash_file.stem)
     with Path(out_dash_file).open("wt") as fh:
         fh.write(json.dumps(dash, indent=2))
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        prog="template-dash.py",
+        description="""
+            Create a cruise-specific version of a templated SeaFlow Grafana
+            dashboard JSON file. Updates starting date range, dashboard title,
+            and dashboard UID. The UID is changed to the template JSON filename
+            without the .json extension, and with the text "CRUISE" replaced
+            with the actual cruise name. e.g. If the template file is /dash/CRUISE-ByTime.json,
+            the output filename would be out_dir/CMOP_3-ByTime.json for the
+            CMOP_3 cruise.
+        """
+    )
     parser.add_argument("template_file", help="Template dashboard JSON file.")
-    parser.add_argument("underway_file", help="Underway TSDATA file.")
-    parser.add_argument("dash_file", help="Output dashboard JSON file.")
+    parser.add_argument("underway_file", help="Underway TSDATA file with RFC3339 timestamps in the first column.")
+    parser.add_argument("out_dir", help="Output directory.")
     args = parser.parse_args()
     
     try:
-        template_dash(args.template_file, args.underway_file, args.dash_file)
+        template_dash(args.template_file, args.underway_file, args.out_dir)
     except Exception as e:
         print(f"Error templating dashboard file: {e}")
         sys.exit(1)
