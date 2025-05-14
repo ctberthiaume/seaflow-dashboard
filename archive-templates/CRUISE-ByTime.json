@@ -21,7 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1705111518873,
+  "id": 20,
+  "iteration": 1747242874145,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1321,6 +1322,38 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "correction"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "raw_abundance"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -1359,7 +1392,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"raw_abundance\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1377,7 +1410,27 @@
               },
               {
                 "params": [
-                  "abundance"
+                  "raw_abundance"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "correction"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "correction"
                 ],
                 "type": "alias"
               }
@@ -1399,6 +1452,16 @@
                 "pop",
                 "=",
                 "'prochloro'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -1459,7 +1522,24 @@
         }
       ],
       "title": "Prochlorococcus abundance",
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "abundance",
+            "binary": {
+              "left": "raw_abundance",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "correction"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -1576,13 +1656,13 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "diam_lwr"
+                  "diam"
                 ],
                 "type": "column"
               },
@@ -1616,6 +1696,16 @@
                 "pop",
                 "=",
                 "'prochloro'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -1755,6 +1845,38 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "abundance_raw"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "correction"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -1793,7 +1915,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1811,7 +1933,27 @@
               },
               {
                 "params": [
-                  "abundance"
+                  "abundance_raw"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "correction"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "correction"
                 ],
                 "type": "alias"
               }
@@ -1833,6 +1975,16 @@
                 "pop",
                 "=",
                 "'synecho'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -1893,7 +2045,24 @@
         }
       ],
       "title": "Synechococcus abundance",
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "abundance",
+            "binary": {
+              "left": "abundance_raw",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "correction"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -2010,13 +2179,13 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "diam_lwr"
+                  "diam"
                 ],
                 "type": "column"
               },
@@ -2050,6 +2219,16 @@
                 "pop",
                 "=",
                 "'synecho'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -2189,6 +2368,38 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "abundance_raw"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "correction"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -2227,7 +2438,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2245,7 +2456,27 @@
               },
               {
                 "params": [
-                  "abundance"
+                  "abundance_raw"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "correction"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "correction"
                 ],
                 "type": "alias"
               }
@@ -2267,6 +2498,16 @@
                 "pop",
                 "=",
                 "'picoeuk'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -2327,7 +2568,24 @@
         }
       ],
       "title": "Picoeukaryote abundance",
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "abundance",
+            "binary": {
+              "left": "abundance_raw",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "correction"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -2444,13 +2702,13 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "diam_lwr"
+                  "diam"
                 ],
                 "type": "column"
               },
@@ -2484,6 +2742,16 @@
                 "pop",
                 "=",
                 "'picoeuk'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -2623,6 +2891,38 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "abundance_raw"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "correction"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -2661,7 +2961,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2679,7 +2979,27 @@
               },
               {
                 "params": [
-                  "abundance"
+                  "abundance_raw"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "correction"
+                ],
+                "type": "column"
+              },
+              {
+                "params": [
+                  "avg"
+                ],
+                "type": "aggregate"
+              },
+              {
+                "params": [
+                  "correction"
                 ],
                 "type": "alias"
               }
@@ -2701,6 +3021,16 @@
                 "pop",
                 "=",
                 "'croco'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -2761,7 +3091,24 @@
         }
       ],
       "title": "Crocosphaera abundance",
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "abundance",
+            "binary": {
+              "left": "abundance_raw",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "correction"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -2878,13 +3225,13 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam) AS \"diameter\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "diam_lwr"
+                  "diam"
                 ],
                 "type": "column"
               },
@@ -2918,6 +3265,16 @@
                 "pop",
                 "=",
                 "'croco'"
+              ],
+              "type": "expression"
+            },
+            {
+              "datatype": "float8",
+              "name": "",
+              "params": [
+                "outlier_flag",
+                "=",
+                "0"
               ],
               "type": "expression"
             }
@@ -3008,13 +3365,13 @@
     ]
   },
   "time": {
-    "from": "2010-05-21T00:00:00Z",
-    "to": "2010-05-28T00:00:00Z"
+    "from": "2024-12-30T00:06:02.000Z",
+    "to": "2025-01-09T03:03:16.000Z"
   },
   "timepicker": {},
   "timezone": "utc",
   "title": "CRUISE By Time",
-  "uid": "",
-  "version": 4,
+  "uid": "CRUISE-ByTime",
+  "version": 2,
   "weekStart": ""
 }
