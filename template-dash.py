@@ -89,10 +89,11 @@ if __name__ == "__main__":
             Create a cruise-specific version of a templated SeaFlow Grafana
             dashboard JSON file. Updates starting date range, dashboard title,
             and dashboard UID. The UID is changed to the template JSON filename
-            without the .json extension, and with the text "CRUISE" replaced
-            with the actual cruise name. e.g. If the template file is /dash/CRUISE-ByTime.json,
-            the output filename would be out_dir/CMOP_3-ByTime.json for the
-            CMOP_3 cruise.
+            without the .json extension, with the text "CRUISE" replaced with
+            the actual cruise name. e.g. If the template file is
+            /dash/CRUISE-ByTime.json, the output UID would be
+            CMOP_3-ByTime-realtime and the output file path would be
+            out_dir/CMOP_3-ByTime-realtime.json.
         """
     )
     parser.add_argument("template_file", help="Template dashboard JSON file.")
