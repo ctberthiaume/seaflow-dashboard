@@ -104,7 +104,7 @@
         "enable": false,
         "iconColor": "red",
         "name": "Flagged during filtering",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"file_flag\" as text\nFROM\n  \"SeaFlowSFL_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"file_flag\" != 0\n",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"file_flag\" as text\nFROM\n  \"SeaFlowSFL_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"file_flag\" != 0\n",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -247,7 +247,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(event_rate) AS \"event_rate\",\n  avg(all_count/180) AS \"calculated_event_rate\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(event_rate) AS \"event_rate\",\n  avg(all_count/180) AS \"calculated_event_rate\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -291,7 +291,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -555,7 +555,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -579,7 +579,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -824,7 +824,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(opp_count) AS \"opp_count\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(opp_count) AS \"opp_count\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -848,7 +848,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -1030,7 +1030,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(opp_evt_ratio) AS \"opp_evt_ratio\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(opp_evt_ratio) AS \"opp_evt_ratio\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1054,7 +1054,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -1292,7 +1292,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\",\n  avg(saturated_count) AS \"saturated_count\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\",\n  avg(saturated_count) AS \"saturated_count\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1336,7 +1336,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -1609,7 +1609,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\",\n  avg(noise_count) AS \"noise_count\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(all_count) AS \"all_count\",\n  avg(noise_count) AS \"noise_count\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1653,7 +1653,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -1870,7 +1870,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(stream_pressure) AS \"stream_pressure\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(stream_pressure) AS \"stream_pressure\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1894,7 +1894,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -2181,7 +2181,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(volume) AS \"volume\"\nFROM \"SeaFlowSFL\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(volume) AS \"volume\"\nFROM \"SeaFlowSFL_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2205,7 +2205,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowSFL\"",
+          "table": "\"SeaFlowSFL_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
@@ -2935,8 +2935,8 @@
     ]
   },
   "time": {
-    "from": "2010-05-21T00:00:00Z",
-    "to": "2010-05-28T00:00:00Z"
+    "from": "now-2d",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
