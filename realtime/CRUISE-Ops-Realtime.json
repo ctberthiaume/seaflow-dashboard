@@ -320,7 +320,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"beads per µL\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'beads'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"beads per µL\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'beads'\nGROUP BY 1\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -344,7 +344,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowPopAbundance\"",
+          "table": "\"SeaFlowPopAbundance_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [
@@ -608,7 +608,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"beads per µL\"\nFROM \"SeaFlowPopAbundance\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'beads'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"beads per µL\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'beads'\nGROUP BY 1\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -632,7 +632,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowPopAbundance\"",
+          "table": "\"SeaFlowPopAbundance_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [
@@ -2052,7 +2052,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(background) AS \"background %\"\nFROM \"SeaFlowBackground\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(background) AS \"background %\"\nFROM \"SeaFlowBackground_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2076,7 +2076,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowBackground\"",
+          "table": "\"SeaFlowBackground_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [
@@ -2310,7 +2310,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(\"D1\") AS \"D1\"\nFROM \"SeaFlowDrift\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(\"D1\") AS \"D1\"\nFROM \"SeaFlowDrift_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2334,7 +2334,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowDrift\"",
+          "table": "\"SeaFlowDrift_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [
@@ -2439,7 +2439,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(\"D2\") AS \"D2\"\nFROM \"SeaFlowDrift\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(\"D2\") AS \"D2\"\nFROM \"SeaFlowDrift_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2463,7 +2463,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowDrift\"",
+          "table": "\"SeaFlowDrift_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [
@@ -2568,7 +2568,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(fsc) AS \"fsc\"\nFROM \"SeaFlowDrift\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(fsc) AS \"fsc\"\nFROM \"SeaFlowDrift_130\"\nWHERE\n  $__timeFilter(\"time\")\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2592,7 +2592,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowDrift\"",
+          "table": "\"SeaFlowDrift_130\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamptz",
           "where": [

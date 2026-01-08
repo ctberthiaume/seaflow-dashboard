@@ -1392,7 +1392,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"raw_abundance\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"raw_abundance\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1452,16 +1452,6 @@
                 "pop",
                 "=",
                 "'prochloro'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -1656,7 +1646,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'prochloro'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1696,16 +1686,6 @@
                 "pop",
                 "=",
                 "'prochloro'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -1915,7 +1895,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -1975,16 +1955,6 @@
                 "pop",
                 "=",
                 "'synecho'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -2179,7 +2149,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'synecho'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2219,16 +2189,6 @@
                 "pop",
                 "=",
                 "'synecho'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -2438,7 +2398,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2498,16 +2458,6 @@
                 "pop",
                 "=",
                 "'picoeuk'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -2702,7 +2652,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'picoeuk'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2742,16 +2692,6 @@
                 "pop",
                 "=",
                 "'picoeuk'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -2961,7 +2901,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(abundance) AS \"abundance_raw\",\n  avg(correction) AS \"correction\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -3021,16 +2961,6 @@
                 "pop",
                 "=",
                 "'croco'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
@@ -3225,7 +3155,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco' AND\n  outlier_flag = 0\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(\"time\",$__interval),\n  avg(diam_lwr) AS \"diameter\"\nFROM \"SeaFlowPopAbundance_130\"\nWHERE\n  $__timeFilter(\"time\") AND\n  pop = 'croco'\nGROUP BY 1\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -3265,16 +3195,6 @@
                 "pop",
                 "=",
                 "'croco'"
-              ],
-              "type": "expression"
-            },
-            {
-              "datatype": "float8",
-              "name": "",
-              "params": [
-                "outlier_flag",
-                "=",
-                "0"
               ],
               "type": "expression"
             }
