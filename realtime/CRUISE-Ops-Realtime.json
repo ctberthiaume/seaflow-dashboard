@@ -24,7 +24,7 @@
         "enable": false,
         "iconColor": "red",
         "name": "Pump Faults",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"pump_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"pump_fault\" IS NOT NULL",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"pump_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"pump_fault\" IS NOT NULL",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -40,7 +40,7 @@
         "enable": false,
         "iconColor": "yellow",
         "name": "Syringe Pump Faults",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"syringe_pump_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"syringe_pump_fault\" IS NOT NULL",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"syringe_pump_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"syringe_pump_fault\" IS NOT NULL",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -56,7 +56,7 @@
         "enable": false,
         "iconColor": "orange",
         "name": "Inlet Faults",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"inlet_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"inlet_fault\" IS NOT NULL",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"inlet_fault\" as text\nFROM\n  \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"inlet_fault\" IS NOT NULL",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -72,7 +72,7 @@
         "enable": false,
         "iconColor": "green",
         "name": "Write EVT ON",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"write_evt\" as text\nFROM\n  \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"write_evt\" = 1",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"write_evt\" as text\nFROM\n  \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"write_evt\" = 1",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -88,7 +88,7 @@
         "enable": false,
         "iconColor": "purple",
         "name": "Write EVT OFF",
-        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"write_evt\" as text\nFROM\n  \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"write_evt\" = 0",
+        "rawQuery": "SELECT\n  extract(epoch from time) AS time,\n  \"write_evt\" as text\nFROM\n  \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(time) and\n  \"write_evt\" = 0",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -2692,7 +2692,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  \"time\" AS \"time\",\n  \"${pmt:csv}\"\nFROM \"SeaFlowInstrumentLog_raw\"\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
+          "rawSql": "SELECT\n  \"time\" AS \"time\",\n  \"${pmt:csv}\"\nFROM \"SeaFlowInstrumentLog_130_raw\"\nWHERE\n  $__timeFilter(\"time\")\nORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -2704,7 +2704,7 @@
               }
             ]
           ],
-          "table": "\"SeaFlowInstrumentLog_raw\"",
+          "table": "\"SeaFlowInstrumentLog_130_raw\"",
           "timeColumn": "\"time\"",
           "timeColumnType": "timestamp",
           "where": [
